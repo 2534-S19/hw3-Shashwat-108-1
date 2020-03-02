@@ -1,8 +1,8 @@
 /*
  * GPIO.c
  *
- *  Created on:
- *      Author:
+ *  Created on:  3rd March, 2020
+ *      Author:  Shashwat Singh
  */
 
 // For the code you place here, you may use your code that uses register references.
@@ -11,35 +11,59 @@
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 #include "myGPIO.h"
 
+// defining the buttons here:
+#define L_left BIT1 // Launchpad left
+#define L_right BIT4 // Launchpad right
+#define B_up BIT1 // Booster up
+#define B_down BIT5 // Booster down
+
+// defining the LEds on the launchpad:
+#define L_1 BIT0 // launchpad led1
+#define L_red BIT0 // launchpad led2 red
+#define L_green BIT1 // launchpad led2 green
+#define L_blue BIT2 // launchpad led2 blue
+
+// defining the LEds on the Booster:
+#define B_red BIT6 // launchpad led2 red
+#define B_green BIT4 // launchpad led2 green
+#define B_blue BIT6 // launchpad led2 blue
+
 // TODO: Create a function to initialize the GPIO.
 // Even though this assignment does not use all of the pushbuttons, you should write one function that does a complete GPIO init.
 void initGPIO()
 {
-    // Launchpad S1
+    P1DIR &= ~L_left;
+    P1REN |= L_left;
 
-    // Launchpad S2
+    P1DIR &= ~L_right;
+    P1REN |= L_right;
 
-    // Boosterpack S1
+    P5DIR &= ~B_up;
+    P5REN |= B_up;
 
-    // Boosterpack S2
-
-    // Launchpad LED1
-
-    // Launchpad LED2 Red
-
-    // Launchpad LED2 Green
-
-    // Launchpad LED2 Blue
-
-    // Boosterpack LED Red
-
-    // Boosterpack LED Green
-
-    // Boosterpack LED Blue
-
+    P3DIR &= ~B_down;
+    P3REN |= B_down;
+//    -----------------------
+    P1DIR |= L_1;
+    P2DIR |= L_red;
+    P2DIR |= L_green;
+    P2DIR |= L_blue;
+//    ------------------------
+    P2DIR |= B_red;
+    P2DIR |= B_green;
+    P5DIR |= B_blue;
 
     // Turn off all LEDs at the start.
+    // turning off the LEDs:
+    P1OUT &= ~L_1;
+    P2OUT &= ~L_red;
+    P2OUT &= ~L_green;
+    P2OUT &= ~L_blue;
+    P2OUT &= ~B_red;
+    P2OUT &= ~B_green;
+    P5OUT &= ~B_blue;
 }
+
 
 // TODO: Create a function to return the status of Launchpad Pushbutton S1
 unsigned char checkStatus_LaunchpadS1()
