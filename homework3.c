@@ -35,7 +35,10 @@ int main(void)
 
         // TODO: If Timer0 has expired, increment count0.
         // YOU MUST WRITE timer0expired IN myTimer.c
-
+        if(timer0Expired())
+        {
+            count0 ++;
+        }
 
 
         // TODO: If Timer1 has expired, update the button history from the pushbutton value.
@@ -64,22 +67,119 @@ void initBoard()
 // Since count is an unsigned integer, you can mask the value in some way.
 void changeLaunchpadLED2(unsigned int count)
 {
-
+switch (count % 8)
+{
+    case 0:
+        turnOn_LaunchpadLED2Red();
+        turnOff_LaunchpadLED2Green();
+        turnOff_LaunchpadLED2Blue();
+        break;
+    case 1:
+        turnOff_LaunchpadLED2Red();
+        turnOn_LaunchpadLED2Green();
+        turnOff_LaunchpadLED2Blue();
+        break;
+    case 2:
+        turnOn_LaunchpadLED2Red();
+        turnOn_LaunchpadLED2Green();
+        turnOff_LaunchpadLED2Blue();
+        break;
+    case 3:
+        turnOff_LaunchpadLED2Red();
+        turnOff_LaunchpadLED2Green();
+        turnOn_LaunchpadLED2Blue();
+        break;
+    case 4:
+        turnOn_LaunchpadLED2Red();
+        turnOff_LaunchpadLED2Green();
+        turnOn_LaunchpadLED2Blue();
+        break;
+    case 5:
+        turnOff_LaunchpadLED2Red();
+        turnOn_LaunchpadLED2Green();
+        turnOn_LaunchpadLED2Blue();
+        break;
+    case 6:
+        turnOn_LaunchpadLED2Red();
+        turnOn_LaunchpadLED2Green();
+        turnOn_LaunchpadLED2Blue();
+        break;
+    default:
+        turnOff_LaunchpadLED2Red();
+        turnOff_LaunchpadLED2Green();
+        turnOff_LaunchpadLED2Blue();
+        break;
 }
+        }
 
 // TODO: Maybe the value of a count variable to a color for the Boosterpack LED
 // This is essentially a copy of the previous function, using a different LED
 void changeBoosterpackLED(unsigned int count)
 {
+    switch ( count % 8 )
+    {
+        case 0:
+            // For case 0
+            turnOn_BoosterpackLEDRed();
+            turnOff_BoosterpackLEDGreen();
+            turnOff_BoosterpackLEDBlue();
 
+            break;
+        case 1:
+            // For case 1
+            turnOff_BoosterpackLEDRed();
+            turnOn_BoosterpackLEDGreen();
+            turnOff_BoosterpackLEDBlue();
+
+            break;
+        case 2:
+            // For case 2
+            turnOn_BoosterpackLEDRed();
+            turnOn_BoosterpackLEDGreen();
+            turnOff_BoosterpackLEDBlue();
+
+            break;
+        case 3:
+            // For case 3
+            turnOff_BoosterpackLEDRed();
+            turnOff_BoosterpackLEDGreen();
+            turnOn_BoosterpackLEDBlue();
+
+            break;
+        case 4:
+            // For case 4
+            turnOn_BoosterpackLEDRed();
+            turnOff_BoosterpackLEDGreen();
+            turnOn_BoosterpackLEDBlue();
+
+            break;
+        case 5:
+            // For case 5
+            turnOff_BoosterpackLEDRed();
+            turnOn_BoosterpackLEDGreen();
+            turnOn_BoosterpackLEDBlue();
+
+            break;
+        case 6:
+            // For case 6
+            turnOn_BoosterpackLEDRed();
+            turnOn_BoosterpackLEDGreen();
+            turnOn_BoosterpackLEDBlue();
+
+            break;
+        default:
+            // For default case
+            turnOff_BoosterpackLEDRed();
+            turnOff_BoosterpackLEDGreen();
+            turnOff_BoosterpackLEDBlue();
+
+            break;
+    }
 }
 
 // TODO: Create a button state machine.
 // The button state machine should return true or false to indicate a completed, debounced button press.
 bool fsmBoosterpackButtonS1(unsigned int buttonhistory)
 {
-    bool pressed = false;
 
-
-    return pressed;
 }

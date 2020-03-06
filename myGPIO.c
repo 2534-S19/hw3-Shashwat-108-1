@@ -34,15 +34,19 @@ void initGPIO()
 {
     P1DIR &= ~L_left;
     P1REN |= L_left;
+    P1OUT |= L_left;
 
     P1DIR &= ~L_right;
     P1REN |= L_right;
+    P1OUT |= L_right;
 
     P5DIR &= ~B_up;
     P5REN |= B_up;
+    P5OUT |= B_up;
 
     P3DIR &= ~B_down;
     P3REN |= B_down;
+    P3OUT |= B_down;
 //    -----------------------
     P1DIR |= L_1;
     P2DIR |= L_red;
@@ -68,107 +72,107 @@ void initGPIO()
 // TODO: Create a function to return the status of Launchpad Pushbutton S1
 unsigned char checkStatus_LaunchpadS1()
 {
-
+    return (P1IN & L_left);
 }
 
 // TODO: Create a function to return the status of Launchpad Pushbutton S2
 unsigned char checkStatus_LaunchpadS2()
 {
-
+    return (P1IN & L_right);
 }
 
 // TODO: Create a function to return the status of Boosterpack Pushbutton S1
 unsigned char checkStatus_BoosterpackS1()
 {
-
+    return (P5IN & B_up);
 }
 
 // TODO: Create a function to return the status of Boosterpack Pushbutton S2
 unsigned char checkStatus_BoosterpackS2()
 {
-
+    return (P3IN & B_down);
 }
 
 // TODO: Create a function to turn on Launchpad LED1.
 void turnOn_LaunchpadLED1()
 {
-
+    P1OUT |= L_1;
 }
 
 // TODO: Create a function to turn off Launchpad LED1.
 void turnOff_LaunchpadLED1()
 {
-
+    P1OUT &= ~L_1;
 }
 
 // TODO: Create a function to turn on the Red Launchpad LED2.
 void turnOn_LaunchpadLED2Red()
 {
-
+    P2OUT |= L_red;
 }
 
 // TODO: Create a function to turn off the Red Launchpad LED2.
 void turnOff_LaunchpadLED2Red()
 {
-
+    P2OUT &= ~L_red;
 }
 
 // TODO: Create a function to turn on the Green Launchpad LED2.
 void turnOn_LaunchpadLED2Green()
 {
-
+    P2OUT |= L_green;
 }
 
 // TODO: Create a function to turn off the Green Launchpad LED2.
 void turnOff_LaunchpadLED2Green()
 {
-
+    P2OUT &= ~L_green;
 }
 
 // TODO: Create a function to turn on the Blue Launchpad LED2.
 void turnOn_LaunchpadLED2Blue()
 {
-
+    P2OUT |= L_blue;
 }
 
 // TODO: Create a function to turn off the Blue Launchpad LED2.
 void turnOff_LaunchpadLED2Blue()
 {
-
+    P2OUT &= ~L_blue;
 }
 
 // TODO: Create a function to turn on the Red Boosterpack LED2.
 void turnOn_BoosterpackLEDRed()
 {
-
+    P2OUT |= B_red;
 }
 
 // TODO: Create a function to turn off the Red Boosterpack LED2.
 void turnOff_BoosterpackLEDRed()
 {
-
+    P2OUT &= ~B_red;
 }
 
 // TODO: Create a function to turn on the Green Boosterpack LED2.
 void turnOn_BoosterpackLEDGreen()
 {
-
+    P2OUT |= B_green;
 }
 
 // TODO: Create a function to turn off the Green Boosterpack LED2.
 void turnOff_BoosterpackLEDGreen()
 {
-
+    P2OUT &= ~B_green;
 }
 
 // TODO: Create a function to turn on the Blue Boosterpack LED2.
 void turnOn_BoosterpackLEDBlue()
 {
-
+    P5OUT |= B_blue;
 }
 
 // TODO: Create a function to turn off the Green Boosterpack LED2.
 void turnOff_BoosterpackLEDBlue()
 {
-
+    P5OUT &= ~B_blue;
 }
